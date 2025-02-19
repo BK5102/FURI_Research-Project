@@ -26,11 +26,9 @@ masterlist = masterlist.merge(plasma_fasting_insulin,left_on = "SEQN",right_on =
 masterlist = masterlist.merge(sleep_data,left_on = "SEQN",right_on = "SEQN")
 
 
-
 ## checking structure 
     # print(masterlist.describe())
     # print(masterlist.isnull().sum())
-
 
 
 ## understanding features (columns) in the data
@@ -38,26 +36,39 @@ masterlist = masterlist.merge(sleep_data,left_on = "SEQN",right_on = "SEQN")
 numerical_cols = masterlist.select_dtypes(include=["int64", "float64"]).columns
 categorical_cols = masterlist.select_dtypes(include=["object"]).columns
 
-    # print("Numerical Columns:", numerical_cols)
-    # print("Categorical Columns:", categorical_cols)
+# print("Numerical Columns:", numerical_cols)
+# print("Categorical Columns:", categorical_cols)
 
 
+## handle missing values
+masterlist.isnull().sum()
 
-## identifying data that needs cleaning and preprocessing 
-    # check for missing values and fill or drop missing values
+## remove rows with missing values
+masterlist.dropna(inplace=True)
 
-masterlist.fillna(masterlist.mean(), inplace=True)  # Fill with mean (for numerical)
-masterlist.fillna("Unknown", inplace=True)  # Fill with string (for categorical)
-masterlist.dropna(inplace=True)  # Remove rows with missing values
+## fill missing values with mean/median/mode
+masterlist.fillna(masterlist.mean(), inplace=True)  # Numeric columns
+masterlist.fillna(masterlist.mode().iloc[0], inplace=True)  # Categorical columns
 
-    # check for duplicate rows, count and remove duplicates
-    #print(masterlist.duplicated().sum())
+## handle outliers
+Q1 = masterlist.quantile(0.25)
+Q3 = masterlist.quantile(0.75)
+IQR = Q3 - Q1
+masterlist_outliers_removed = masterlist[~((masterlist < (Q1 - 1.5 * IQR)) | (masterlist > (Q3 + 1.5 * IQR))).any(axis=1)]
+
+## remove duplicate records
 masterlist.drop_duplicates(inplace=True)
 
+## remove redundant rows
+masterlist.sample(frac=0.5, random_state=42) #50% of data is kept
 
 
 
-# print(masterlist)
+masterlist.to_csv('merged_and_cleaned_data.csv', sep='\t', index=True)   #change to True later 
+
+
+
+print(masterlist)
 
 
 
