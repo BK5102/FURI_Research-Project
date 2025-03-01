@@ -1,0 +1,103 @@
+# data_preprocessing.py
+
+import zipfile 
+import pandas as pd
+import matplotlib.pyplot as plt
+import seaborn as sns
+import numpy as np
+from scipy.stats import zscore
+
+def prepare_data():
+    """Loads, merges, cleans, and returns the final selected DataFrame."""
+
+    # Load CSV files
+    blood_pressure_and_cholesterol = pd.read_csv("data/2005-2006/Blood_Pressure_Cholesterol.csv")
+    diabetes = pd.read_csv("data/2005-2006/Diabetes.csv")
+    cholesterolldl_trigly_ApoB = pd.read_csv("data/2005-2006/Cholesterol - LDL_Triglyceride_Apoliprotein (ApoB).csv")
+    demographics = pd.read_csv("data/2005-2006/Demographics.csv")
+    hbA1c = pd.read_csv("data/2005-2006/Glycohemoglobin.csv", dtype=float)
+    physical_act_individual = pd.read_csv("data/2005-2006/Physical_Activity - Individual_Activities.csv")
+    physical_act = pd.read_csv("data/2005-2006/Physical_Activity.csv")
+    plasma_fasting_insulin = pd.read_csv("data/2005-2006/Plasma_Fasting_Glucose_Insulin.csv")
+    sleep_data = pd.read_csv("data/2005-2006/Sleep_Disorders.csv")
+
+    # Merge data on key 'SEQN'
+    masterlist = (
+        blood_pressure_and_cholesterol
+        .merge(diabetes, on="SEQN")
+        .merge(cholesterolldl_trigly_ApoB, on="SEQN")
+        .merge(demographics, on="SEQN")
+        .merge(hbA1c, on="SEQN")
+        .merge(physical_act_individual, on="SEQN")
+        .merge(physical_act, on="SEQN")
+        .merge(plasma_fasting_insulin, on="SEQN")
+        .merge(sleep_data, on="SEQN")
+    )
+
+    # Drop missing values
+    masterlist.dropna(inplace=True)
+
+    # Remove outliers
+    numeric_cols = masterlist.select_dtypes(include=[np.number]).columns
+    masterlist = filter_outliers_per_column(masterlist, numeric_cols, threshold=4)
+
+    # Remove duplicates
+    masterlist.drop_duplicates(inplace=True)
+
+    # Optional sampling (90%)
+    masterlist = masterlist.sample(frac=0.9, random_state=42)
+
+    # Select relevant features
+    selected_features = {
+        "BPC": ["BPQ020"],
+        "Diabetes": ["DIQ010", "DID040", "DIQ220", "DIQ190A", "DIQ190B", "DIQ230", "DID260", "DIQ280", "DIQ300S", "DIQ300D"],
+        "Physical_Activity": ["PAQ180"],
+        "Physical_act_individual": ["PADACTIV", "PADDURAT"],
+        "Sleep": ["SLD010H"],
+        "Cholesterol_LDL_Trigly_ApoB": ["LBXAPB"],
+        "Plasma_Fasting_Insulin": ["LBDINSI"],
+        "HbA1c": ["LBXGH"],
+        "Demographics": ["RIAGENDR", "RIDAGEMN"]
+    }
+
+    # Create a dictionary of DataFrames for each feature group
+    feature_dataframes = {name: masterlist[["SEQN"] + cols] for name, cols in selected_features.items()}
+
+    # Concatenate them
+    combined_selected_features = pd.concat(feature_dataframes.values(), axis=1)
+
+    # Remove duplicate SEQN columns
+    combined_selected_features = combined_selected_features.loc[:, ~combined_selected_features.columns.duplicated()]
+
+    # Sort by SEQN
+    combined_selected_features.sort_values(by="SEQN", inplace=True)
+
+    return combined_selected_features
+
+def filter_outliers_per_column(df, cols, threshold=4):
+    # Create a copy to avoid modifying the original DataFrame
+
+    """Filters out rows that exceed the z-score threshold for each column."""
+
+    df_filtered = df.copy()
+    for col in cols:
+        # Only apply if column variance is not zero
+        if df_filtered[col].std() != 0:
+            # Calculate z-scores for the column
+            col_zscore = np.abs(zscore(df_filtered[col]))
+            # Keep only rows within threshold for this column
+            df_filtered = df_filtered[col_zscore < threshold]
+    return df_filtered
+
+
+def save_cleaned_data(df, data_path="selected_features.csv", stats_path="selected_features_stats.csv"):
+    """Saves the cleaned DataFrame and its summary stats to CSV files."""
+    if not df.empty:
+        df.to_csv(data_path, sep='\t', index=False)
+        # Save summary statistics
+        stats_df = df.describe()
+        stats_df.to_csv(stats_path, sep='\t', index=True)
+    else:
+        print("No data to save.")
+
+
