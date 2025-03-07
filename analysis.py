@@ -13,7 +13,9 @@ def main():
                       data_path="selected_features.csv", 
                       stats_path="selected_features_stats.csv")
     
-    # 3. Perform additional analysis or visualization
+    print("test line")
+    
+    """ # 3. Perform additional analysis or visualization
     numeric_cols = combined_selected_features.select_dtypes(include=[float, int]).columns
     for col in numeric_cols:
         plt.figure(figsize=(8, 4))
@@ -21,7 +23,7 @@ def main():
         plt.title(f"Distribution of {col}")
         plt.xlabel(col)
         plt.ylabel("Frequency")
-        plt.show()
+        plt.show() """
 
 if __name__ == "__main__":
     main()

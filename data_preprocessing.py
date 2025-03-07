@@ -1,11 +1,18 @@
 # data_preprocessing.py
 
-import zipfile 
 import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
 import numpy as np
 from scipy.stats import zscore
+from data_cleaning.diabetes import clean_diab_age_column, clean_diab_since_saw_specialist_column, clean_diab_last_A1C_level, clean_diab_when_diagnosis, clean_diab_how_often_check_blood_sugar, clean_diab_systolic_blood_pressure_val, clean_diab_diastolic_blood_pressure_val
+from data_cleaning.sleep import clean_sleep_amount_of_sleep
+from data_cleaning.physicalActivity import clean_physAct_avg_level, clean_physAct_indiv_avg_duration
+from data_cleaning.demographics import clean_demographic_age
+from data_cleaning.cholesterol import clean_cholesterol_ApoB
+from data_cleaning.insulin import clean_plasma_fasting_glucose_insulin
+from data_cleaning.glycohemoglobin import clean_glycohemoglobin
+
 
 def prepare_data():
     """Loads, merges, cleans, and returns the final selected DataFrame."""
@@ -72,7 +79,39 @@ def prepare_data():
     # Sort by SEQN
     combined_selected_features.sort_values(by="SEQN", inplace=True)
 
+    # Replace special codes with numeric values or NaN
+
+    ## diabetes
+    combined_selected_features['DID040'] = clean_diab_age_column(combined_selected_features['DID040'])
+    combined_selected_features['DIQ230'] = clean_diab_since_saw_specialist_column(combined_selected_features['DIQ230'])
+    combined_selected_features['DIQ280'] = clean_diab_last_A1C_level(combined_selected_features['DIQ280'])
+    combined_selected_features['DIQ220'] = clean_diab_when_diagnosis(combined_selected_features['DIQ220'])
+    combined_selected_features['DID260'] = clean_diab_how_often_check_blood_sugar(combined_selected_features['DID260'])
+    combined_selected_features['DIQ300S'] = clean_diab_systolic_blood_pressure_val(combined_selected_features['DIQ300S'])
+    combined_selected_features['DIQ300D'] = clean_diab_diastolic_blood_pressure_val(combined_selected_features['DIQ300D'])
+
+    ## sleep
+    combined_selected_features['SLD010H'] = clean_sleep_amount_of_sleep(combined_selected_features['SLD010H'])
+
+    ## physical activity 
+    combined_selected_features['PAQ180'] = clean_physAct_avg_level(combined_selected_features['PAQ180'])
+    combined_selected_features['PADDURAT'] = clean_physAct_indiv_avg_duration(combined_selected_features['PADDURAT'])
+
+    ## demographics
+    combined_selected_features['RIDAGEMN'] = clean_demographic_age(combined_selected_features['RIDAGEMN'])
+
+    ## cholesterol 
+    combined_selected_features['LBXAPB'] = clean_cholesterol_ApoB(combined_selected_features['LBXAPB'])
+
+    ## glycohemoglobin
+    combined_selected_features['LBXGH'] = clean_glycohemoglobin(combined_selected_features['LBXGH'])
+
+    ## insulin
+    combined_selected_features['LBDINSI'] = clean_plasma_fasting_glucose_insulin(combined_selected_features['LBDINSI'])
+
+
     return combined_selected_features
+
 
 def filter_outliers_per_column(df, cols, threshold=4):
     # Create a copy to avoid modifying the original DataFrame
@@ -99,5 +138,3 @@ def save_cleaned_data(df, data_path="selected_features.csv", stats_path="selecte
         stats_df.to_csv(stats_path, sep='\t', index=True)
     else:
         print("No data to save.")
-
-
