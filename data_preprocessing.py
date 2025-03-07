@@ -42,11 +42,11 @@ def prepare_data():
     )
 
     # Drop missing values
-    masterlist.dropna(inplace=True)
+    #masterlist.dropna(inplace=True)
 
     # Remove outliers
-    numeric_cols = masterlist.select_dtypes(include=[np.number]).columns
-    masterlist = filter_outliers_per_column(masterlist, numeric_cols, threshold=4)
+    #numeric_cols = masterlist.select_dtypes(include=[np.number]).columns
+    #masterlist = filter_outliers_per_column(masterlist, numeric_cols, threshold=4)
 
     # Remove duplicates
     masterlist.drop_duplicates(inplace=True)
@@ -113,10 +113,10 @@ def prepare_data():
     return combined_selected_features
 
 
-def filter_outliers_per_column(df, cols, threshold=4):
+""" def filter_outliers_per_column(df, cols, threshold=4):
     # Create a copy to avoid modifying the original DataFrame
 
-    """Filters out rows that exceed the z-score threshold for each column."""
+    Filters out rows that exceed the z-score threshold for each column.
 
     df_filtered = df.copy()
     for col in cols:
@@ -126,7 +126,7 @@ def filter_outliers_per_column(df, cols, threshold=4):
             col_zscore = np.abs(zscore(df_filtered[col]))
             # Keep only rows within threshold for this column
             df_filtered = df_filtered[col_zscore < threshold]
-    return df_filtered
+    return df_filtered """
 
 
 def save_cleaned_data(df, data_path="selected_features.csv", stats_path="selected_features_stats.csv"):
