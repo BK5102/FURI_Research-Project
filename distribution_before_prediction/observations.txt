@@ -1,0 +1,77 @@
+## observations of patterns/trends before splitting data into training, validation and testing and prediction
+
+
+## assessment of variables against gender (male and female)
+# gender is categorical, so used kde/histogram
+
+#BPQ020 by RIAGENDR
+Majority of individuals have NOT been diagnosed with high blood pressure or hypertension
+    BPQ020 = 2 ("No") has a significantly higher count than BPQ020 = 1 ("Yes")
+    meaning most people have not been told they have high blood pressure
+    More females (RIAGENDR = 2) report not being diagnosed than males
+    The KDE curve for females is slightly higher at BPQ020 = 2
+
+#DIQ010 by RIAGENDR
+Majority of individuals have NOT been diagnosed with diabetes or sugar diabetes
+    DIQ010 = 2 ("No") has a significantly higher count than DIQ010 = 1 ("Yes")
+    meaning most people have not been told they have high blood pressure
+    More females (RIAGENDR = 2) report not being diagnosed than males
+    The KDE curve for females is slightly higher at DIQ010 = 2
+
+#DIQ190A by RIAGENDR
+Majority of individuals have NOT been advised to control/lose weight for diabetes risk reduction
+    DIQ190A = 2 ("No") has a significantly higher count than DIQ190A = 1 ("Yes")
+    meaning most people have not been told they have high blood pressure
+    More females (RIAGENDR = 2) report not being diagnosed than males
+    The KDE curve for females is slightly higher at DIQ190A = 2
+
+#DIQ190B by RIAGENDR
+Majority of individuals have NOT been advised to increase physical activity or exercise for diabetes risk reduction
+    DIQ190B = 2 ("No") has a significantly higher count than DIQ190B = 1 ("Yes")
+    meaning most people have not been told they have high blood pressure
+    More females (RIAGENDR = 2) report not being diagnosed than males
+    The KDE curve for females is slightly higher at DIQ190B = 2
+
+#PAQ180 by RIAGENDR
+Majority of individuals report moderate physical activity characterized by standing or walking a lot but 
+not lifting heavy objects (PAQ180 = 2)
+More females (RIAGENDR = 2) report slightly higher frequencies in moderate physical activity compared to males
+(PAQ180 = 2), (PAQ180 = 3)
+There is a gradual decrease in the number of individuals who report higher levels of physical activity (PAQ180 = 4)
+
+#PADACTIV by RIAGENDR
+Majority of the activities are common activities like walking, running, basketball and bicycling over the past 30 days
+in vigorous or moderate amount (PADACTIV = 10-18)
+More females (RIAGENDR = 2) have participated in activities such as bicycling, bowling and dancing (PADACTIV = 12-14)
+More males (RIAGENDR = 1) have participated in activities such as tennis, treadmill and volleyball (PADACTIV = 39-41)
+There is a decrease in the number of individuals who have done activities such as yoga, cheerleading 
+and gymnastics, rope jumping, skateboarding, surfing, trampoline jumping
+
+#PADDURAT by RIAGENDR
+Majority of individuals have done these common activities for a duration of 70 minutes over the past 30 days 
+in vigorous or moderate amount (PADDURAT = 0-73)
+During this amount of time, there are more males (RIAGENDR = 1) who have participated in activiites for a 
+duration of 25 minutes 
+There is a decrease in the average duration of activity in both males and females. 
+
+#SLD010H by RIAGENDR
+Majority of individuals usually get 7-9 hours of sleep at night on weekdays or workdays (PADDURAT = 7-9)
+7 hours of sleep is the most common sleep duration 
+There are more females who get 7 hours of sleep compared to males, indicating more females report 
+getting more sleep than males
+The distribution of sleep duration follows a rough normal distribution curve, centered around 7 hours 
+
+#LBXAPB by RIAGENDR
+The distribution of LBXAPB levels are right-skewed, indicating that more individuals have low 
+Apolipoprotein B levels (around 75-10 mg/dL)
+Females tend to have slightly higher Apolipoprotein B levels around 100 mg/dL compared to males who have a 
+broad distribution with a higher concentration around 75 mg/dL
+
+#LBDINSI by RIAGENDR
+
+
+## assessment of variables against gender (male and female)
+# gender is categorical, so used kde/histogram
+    # advantage of using a kde with a histogram: smoother visualization, less sensitive to bins, to compare the 
+            #actual frequency of data (histogram) 
+
