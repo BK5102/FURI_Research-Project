@@ -1,14 +1,11 @@
 # analysis.py
 import pandas as pd
-import matplotlib.pyplot as plt
-import seaborn as sns
-from data_preprocessing import prepare_data, save_cleaned_data
 from preDM_visualization import preDM_visualization
 from non_preDM_visualization import non_preDM_visualization
 
 def main():
     # 1. Get the cleaned data
-    combined_selected_features = pd.read_csv('selected_features.csv', sep='\t')
+    combined_selected_features = pd.read_csv('../selected_features.csv', sep='\t')
     combined_selected_features.columns = combined_selected_features.columns.str.strip()
     # preDM criteria:
     # plasma fasting insulin - LBDINSI
@@ -27,8 +24,8 @@ def main():
         #print("Non preDM filter ", non_preDM_filter)
 
     # 3. Perform analysis or visualization
-    preDM_visualization(preDM_filter)
-    non_preDM_visualization(non_preDM_filter)
+    #preDM_visualization.preDM_visualization(preDM_filter)
+    non_preDM_visualization.non_preDM_visualization(non_preDM_filter)
 
 
 
