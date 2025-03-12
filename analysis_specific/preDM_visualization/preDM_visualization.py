@@ -14,7 +14,7 @@ def preDM_visualization(preDM_filter):
     hypertension_counts = preDM_filter.groupby("RIAGENDR")["BPQ020"].value_counts().unstack()
 
     # Plot
-    hypertension_counts.plot(kind="bar", figsize=(8,5), colormap="coolwarm")
+    """ hypertension_counts.plot(kind="bar", figsize=(8,5), colormap="coolwarm")
     plt.title("Pre-DM filtered Data: Hypertension by Gender")
     plt.suptitle("Filter values: Plasma fasting insulin levels ≥ 100 mg/dl OR ApoB levels ≥ 110 mg/dl OR HbA1c ≥ 5.5%", fontsize=10, y=0.98)
     plt.xlabel("Gender (1=Male, 2=Female)")
@@ -76,8 +76,10 @@ def preDM_visualization(preDM_filter):
     plt.xlabel("Sleep Duration (hours)")
 
 
-    plt.tight_layout()
+    plt.tight_layout() """
 
     sns.pairplot(preDM_filter[["PADDURAT", "SLD010H", "BPQ020", "RIAGENDR"]], hue="BPQ020")
+    plt.suptitle("Pairplot of Pre-DM Filtered Data by Hypertension", fontsize=10, y=1.00)
+
     plt.show()
 

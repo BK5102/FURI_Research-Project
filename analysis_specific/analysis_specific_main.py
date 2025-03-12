@@ -24,7 +24,7 @@ def main():
         #print("Non preDM filter ", non_preDM_filter)
 
     # 3. Perform analysis or visualization
-    #preDM_visualization.preDM_visualization(preDM_filter)
+    preDM_visualization.preDM_visualization(preDM_filter)
     non_preDM_visualization.non_preDM_visualization(non_preDM_filter)
 
 
