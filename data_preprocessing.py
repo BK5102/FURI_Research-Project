@@ -56,14 +56,19 @@ def prepare_data():
 
     # Select relevant features
     selected_features = {
-        "BPC": ["BPQ020"],
+        "BPC": ["BPQ020"], #hypertension
+
         "Diabetes": ["DIQ010", "DID040", "DIQ220", "DIQ190A", "DIQ190B", "DIQ230", "DID260", "DIQ280", "DIQ300S", "DIQ300D"],
+        
         "Physical_Activity": ["PAQ180"],
-        "Physical_act_individual": ["PADACTIV", "PADDURAT"],
+        "Physical_act_individual": ["PADACTIV", "PADDURAT"], #duration of activity
         "Sleep": ["SLD010H"],
+
+
         "Cholesterol_LDL_Trigly_ApoB": ["LBXAPB"],
         "Plasma_Fasting_Insulin": ["LBDINSI"],
         "HbA1c": ["LBXGH"],
+
         "Demographics": ["RIAGENDR", "RIDAGEMN"]
     }
 
@@ -100,7 +105,7 @@ def prepare_data():
     ## demographics
     combined_selected_features['RIDAGEMN'] = clean_demographic_age(combined_selected_features['RIDAGEMN'])
 
-    ## cholesterol 
+    ## cholesterol/apob levels
     combined_selected_features['LBXAPB'] = clean_cholesterol_ApoB(combined_selected_features['LBXAPB'])
 
     ## glycohemoglobin

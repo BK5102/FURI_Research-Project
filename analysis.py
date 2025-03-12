@@ -14,9 +14,9 @@ def main():
                       stats_path="selected_features_stats.csv")
     
     # 3. Perform additional analysis or visualization
-    visualization_of_data(combined_selected_features)
+    #visualization_of_data(combined_selected_features)
 
-def visualization_of_data(combined_selected_features):
+""" def visualization_of_data(combined_selected_features):
     independent_vars = ['LBDINSI']
                         #'BPQ020'
                         #'DIQ010', 'DIQ190A', 'DIQ190B', 'PAQ180', 'PADACTIV', 'PADDURAT', 
@@ -41,11 +41,11 @@ def visualization_of_data(combined_selected_features):
         #plt.xticks(bins)
 
         plt.tight_layout()
-        plt.show()
+        plt.show() """
 
 
     #Distribution of independent variables by age
-    """ for col in numeric_cols:
+""" for col in numeric_cols:
         #bins = range(1,11)
         plt.figure(figsize=(8, 4))
         sns.histplot(data=combined_selected_features, x=col, y=dependent_var_age, scatter_kws={'alpha':0.5}, line_kws={'color':'red'})
