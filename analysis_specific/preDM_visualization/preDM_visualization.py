@@ -14,13 +14,15 @@ def preDM_visualization(preDM_filter):
     hypertension_counts = preDM_filter.groupby("RIAGENDR")["BPQ020"].value_counts().unstack()
 
     # Plot
-    """ hypertension_counts.plot(kind="bar", figsize=(8,5), colormap="coolwarm")
+    hypertension_counts.plot(kind="bar", figsize=(8,5), colormap="coolwarm")
     plt.title("Pre-DM filtered Data: Hypertension by Gender")
     plt.suptitle("Filter values: Plasma fasting insulin levels ≥ 100 mg/dl OR ApoB levels ≥ 110 mg/dl OR HbA1c ≥ 5.5%", fontsize=10, y=0.98)
     plt.xlabel("Gender (1=Male, 2=Female)")
     plt.ylabel("Count")
     plt.legend(["No Hypertension", "Yes Hypertension"])
     plt.xticks(rotation=0)
+
+    plt.tight_layout()
 
     # 2. compare physical activity and sleep by hypertension status 
         # helps compare distributions of sleep & activity between hypertensive vs. 
@@ -55,7 +57,7 @@ def preDM_visualization(preDM_filter):
     plt.xlabel("Physical Activity Duration (minutes)")
     plt.ylabel("Sleep Duration (hours)")
     plt.legend(title="Hypertension", labels=["No", "Yes"])
-
+    plt.tight_layout()
 
     # 4. density of sleep/activity duration by hypertension status
         # smoother than a histogram, good for distribution insights.
@@ -74,11 +76,35 @@ def preDM_visualization(preDM_filter):
     plt.suptitle("Filter values: Plasma fasting insulin levels ≥ 100 mg/dl OR ApoB levels ≥ 110 mg/dl OR HbA1c ≥ 5.5%", fontsize=10, y=0.98)
     plt.title("Pre-DM filtered Data: Density of Sleep Duration by Hypertension")
     plt.xlabel("Sleep Duration (hours)")
+    plt.tight_layout()
+      
+    # 5. pair plot for preDM_filtered datawith hypertension as hue
 
+    #custom labels for pair plot
+    custom_labels = {
+        "BPQ020": "Hypertension (Yes/No)",
+        "PADDURAT": "Physical Activity (Minutes)",
+        "SLD010H": "Sleep Duration (Hours)",
+        "RIAGENDR": "Gender (Male=1, Female=2)"
+    }
+    
+    hue_labels = {2: "No Hypertension", 1: "Yes Hypertension"}
+    preDM_filter.loc[:, "BPQ020"] = preDM_filter["BPQ020"].map(hue_labels).astype("object")
 
-    plt.tight_layout() """
+    g = sns.pairplot(preDM_filter[["PADDURAT", "SLD010H", "BPQ020", "RIAGENDR"]], hue="BPQ020")
 
-    sns.pairplot(preDM_filter[["PADDURAT", "SLD010H", "BPQ020", "RIAGENDR"]], hue="BPQ020")
+    for ax in g.axes.flat:
+        if ax is not None: 
+            # replace x-label if it's in our custom labels
+            if ax.get_xlabel() in custom_labels:
+                ax.set_xlabel(custom_labels[ax.get_xlabel()], fontsize=10, labelpad=15)
+            # replace y-label if it's in our custom labels
+            if ax.get_ylabel() in custom_labels:
+                ax.set_ylabel(custom_labels[ax.get_ylabel()], fontsize=10, labelpad=15)
+
+    plt.xticks(rotation=30)  # Rotate x-axis labels
+    plt.yticks(rotation=30)  # Rotate y-axis labels
+
     plt.suptitle("Pairplot of Pre-DM Filtered Data by Hypertension", fontsize=10, y=1.00)
 
     plt.show()
