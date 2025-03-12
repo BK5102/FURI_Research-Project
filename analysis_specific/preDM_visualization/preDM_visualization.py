@@ -78,6 +78,6 @@ def preDM_visualization(preDM_filter):
 
     plt.tight_layout()
 
-    #sns.pairplot(preDM_filter, hue="BPQ020")
+    sns.pairplot(preDM_filter[["PADDURAT", "SLD010H", "BPQ020", "RIAGENDR"]], hue="BPQ020")
     plt.show()
 

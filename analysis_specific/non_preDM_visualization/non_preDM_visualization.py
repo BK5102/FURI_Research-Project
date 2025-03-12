@@ -77,7 +77,7 @@ def non_preDM_visualization(non_preDM_filter):
 
     plt.tight_layout()
 
-    #sns.pairplot(non_preDM_filter, hue="BPQ020")
+    sns.pairplot(non_preDM_filter[["PADDURAT", "SLD010H", "BPQ020", "RIAGENDR"]], hue="BPQ020")
 
     plt.show()
 
