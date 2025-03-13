@@ -118,22 +118,6 @@ def prepare_data():
     return combined_selected_features
 
 
-""" def filter_outliers_per_column(df, cols, threshold=4):
-    # Create a copy to avoid modifying the original DataFrame
-
-    Filters out rows that exceed the z-score threshold for each column.
-
-    df_filtered = df.copy()
-    for col in cols:
-        # Only apply if column variance is not zero
-        if df_filtered[col].std() != 0:
-            # Calculate z-scores for the column
-            col_zscore = np.abs(zscore(df_filtered[col]))
-            # Keep only rows within threshold for this column
-            df_filtered = df_filtered[col_zscore < threshold]
-    return df_filtered """
-
-
 def save_cleaned_data(df, data_path="selected_features.csv", stats_path="selected_features_stats.csv"):
     """Saves the cleaned DataFrame and its summary stats to CSV files."""
     if not df.empty:

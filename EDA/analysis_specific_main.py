@@ -6,7 +6,7 @@ from non_preDM_visualization import non_preDM_visualization
 
 def main():
     # 1. Get the cleaned data
-    combined_selected_features = pd.read_csv('../selected_features.csv', sep='\t')
+    combined_selected_features = pd.read_csv('..\csv\selected_features.csv', sep='\t')
     combined_selected_features.columns = combined_selected_features.columns.str.strip()
     # preDM criteria:
     # plasma fasting insulin - LBDINSI
@@ -29,13 +29,14 @@ def main():
 
 
     preDM_visualization.preDM_visualization(preDM_filter)
-    #non_preDM_visualization.non_preDM_visualization(non_preDM_filter)
+    non_preDM_visualization.non_preDM_visualization(non_preDM_filter)
     #plt.tight_layout()
     #plt.show()
+    return combined_selected_features, preDM_criteria
 
 
 if __name__ == "__main__":
-    main()
+     main()
 
 
 
