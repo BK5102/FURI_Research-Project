@@ -18,15 +18,15 @@ def prepare_data():
     """Loads, merges, cleans, and returns the final selected DataFrame."""
 
     # Load CSV files
-    blood_pressure_and_cholesterol = pd.read_csv("data/2005-2006/Blood_Pressure_Cholesterol.csv")
-    diabetes = pd.read_csv("data/2005-2006/Diabetes.csv")
-    cholesterolldl_trigly_ApoB = pd.read_csv("data/2005-2006/Cholesterol - LDL_Triglyceride_Apoliprotein (ApoB).csv")
-    demographics = pd.read_csv("data/2005-2006/Demographics.csv")
-    hbA1c = pd.read_csv("data/2005-2006/Glycohemoglobin.csv", dtype=float)
-    physical_act_individual = pd.read_csv("data/2005-2006/Physical_Activity - Individual_Activities.csv")
-    physical_act = pd.read_csv("data/2005-2006/Physical_Activity.csv")
-    plasma_fasting_insulin = pd.read_csv("data/2005-2006/Plasma_Fasting_Glucose_Insulin.csv")
-    sleep_data = pd.read_csv("data/2005-2006/Sleep_Disorders.csv")
+    blood_pressure_and_cholesterol = pd.read_csv("raw_data/2005-2006/Blood_Pressure_Cholesterol.csv")
+    diabetes = pd.read_csv("raw_data/2005-2006/Diabetes.csv")
+    cholesterolldl_trigly_ApoB = pd.read_csv("raw_data/2005-2006/Cholesterol - LDL_Triglyceride_Apoliprotein (ApoB).csv")
+    demographics = pd.read_csv("raw_data/2005-2006/Demographics.csv")
+    hbA1c = pd.read_csv("raw_data/2005-2006/Glycohemoglobin.csv", dtype=float)
+    physical_act_individual = pd.read_csv("raw_data/2005-2006/Physical_Activity - Individual_Activities.csv")
+    physical_act = pd.read_csv("raw_data/2005-2006/Physical_Activity.csv")
+    plasma_fasting_insulin = pd.read_csv("raw_data/2005-2006/Plasma_Fasting_Glucose_Insulin.csv")
+    sleep_data = pd.read_csv("raw_data/2005-2006/Sleep_Disorders.csv")
 
     # Merge data on key 'SEQN'
     masterlist = (

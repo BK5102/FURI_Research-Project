@@ -9,7 +9,7 @@ def preDM_extract():
 
     preDMCondFilter(combined_selected_features, preDM_criteria)
     print('test line')
-    
+
 
 def preDMCondFilter(combined_selected_features, preDM_criteria):
     
@@ -17,7 +17,8 @@ def preDMCondFilter(combined_selected_features, preDM_criteria):
 
     combined_selected_features['Labels'] = preDM_criteria.astype(int)
 
-    combined_selected_features.to_csv('../selected_features_labeled.csv', sep='\t', index=True)
+    combined_selected_features.to_csv(r'..\spreadsheets_csv\selected_features_labeled.csv', sep='\t', index=True)
 
 if __name__ == "__main__":
     preDM_extract()
+#labeled column that distinguishes preDM vs. non preDM with 
