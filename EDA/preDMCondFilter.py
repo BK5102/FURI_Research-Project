@@ -15,7 +15,9 @@ def preDMCondFilter(combined_selected_features, preDM_criteria):
 
     combined_selected_features['PreDM'] = preDM_criteria.astype(int)
 
-    combined_selected_features.to_csv('../../../selected_features_labeled.csv', sep='\t', index=False)
+    combined_selected_features.to_csv('../selected_features_labeled.csv', sep='\t', index=False)
+    
+
 
 if __name__ == "__main__":
     preDM_extract()

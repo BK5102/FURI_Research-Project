@@ -6,7 +6,7 @@ from non_preDM_visualization import non_preDM_visualization
 
 def main():
     # 1. Get the cleaned data
-    combined_selected_features = pd.read_csv('../../../selected_features.csv', sep='\t')
+    combined_selected_features = pd.read_csv('../selected_features.csv', sep='\t')
     combined_selected_features.columns = combined_selected_features.columns.str.strip()
     # preDM criteria:
     # plasma fasting insulin - LBDINSI
