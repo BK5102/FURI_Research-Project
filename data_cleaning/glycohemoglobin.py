@@ -3,7 +3,7 @@ import numpy as np
 
 ## GLYCOHEMOGLOBIN
 
-# LBXGH
+# LBXGH (3.8 to 15.6)
 
 def clean_glycohemoglobin(glycohemoglobin_level_percent):
     # Replace known special codes with numeric or NaN

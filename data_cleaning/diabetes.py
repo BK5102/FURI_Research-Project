@@ -7,7 +7,7 @@ import numpy as np
 def clean_diab_age_column(age_diab):
     # Replace known special codes with numeric or NaN
     age_diab = age_diab.replace({
-        666: 0,       # Less than 1 year
+        666: 1,       # Less than 1 year
         777: np.nan,  # Refused
         999: np.nan,  # Don't know
         ".": np.nan
@@ -79,10 +79,8 @@ def clean_diab_how_often_check_blood_sugar(check_blood_sugar_val):
 def clean_diab_systolic_blood_pressure_val(systolic_blood_pressure_val):
     # Replace known special codes with numeric or NaN
     systolic_blood_pressure_val = systolic_blood_pressure_val.replace({
-        #0:1, 
-        666: 0,
-        777: np.nan,  # Refused
-        999: np.nan,  # Don't know
+        7777: np.nan,  # Refused
+        9999: np.nan,  # Don't know
         ".": np.nan,  # Missing
     })
 
@@ -92,10 +90,8 @@ def clean_diab_systolic_blood_pressure_val(systolic_blood_pressure_val):
 def clean_diab_diastolic_blood_pressure_val(diastolic_blood_pressure_val):
     # Replace known special codes with numeric or NaN
     diastolic_blood_pressure_val = diastolic_blood_pressure_val.replace({
-        #0:1, 
-        666: 0,
-        777: np.nan,  # Refused
-        999: np.nan,  # Don't know
+        7777: np.nan,  # Refused
+        9999: np.nan,  # Don't know
         ".": np.nan,  # Missing
     })
 

@@ -3,7 +3,7 @@ import numpy as np
 
 ## PLASMA FASTING GLUCOSE AND INSULIN
 
-# LBDINSI
+# LBDINSI (6 to 1761.48)
 
 def clean_plasma_fasting_glucose_insulin(insulin_level_pmol_L):
     # Replace known special codes with numeric or NaN
