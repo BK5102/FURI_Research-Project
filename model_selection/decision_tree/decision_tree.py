@@ -33,9 +33,9 @@ def encode_and_split(labeled_selected_features):
     #X = imp.transform(X)
 
     Y = labeled_selected_features["PreDM"].copy()
-    Y = Y.apply(lambda x: 1 if x == 1 else 0 if x == 2 else None)
+    #Y = Y.apply(lambda x: 1 if x == 1 else 0 if x == 2 else None)
         # 1 for haspreDM, 0 for does not have preDM, None for other values(like 3)
-    Y = Y.dropna()  # Remove rows with NaN values
+    #Y = Y.dropna()  # Remove rows with NaN values
    
     X = X.loc[Y.index]
 

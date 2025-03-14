@@ -114,6 +114,7 @@ def prepare_data():
     ## insulin
     combined_selected_features['LBDINSI'] = clean_plasma_fasting_glucose_insulin(combined_selected_features['LBDINSI'])
 
+    combined_selected_features = combined_selected_features.fillna(combined_selected_features.mean())
 
     return combined_selected_features
 

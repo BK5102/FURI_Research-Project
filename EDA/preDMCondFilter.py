@@ -1,9 +1,8 @@
-from analysis_specific_main import main as analysis_main
+import pandas as pd
 
-#print("current working directory: ", os.getcwd())
-
-def preDM_extract():
-    combined_selected_features, preDM_criteria = analysis_main()
+def main():
+    combined_selected_features = pd.read_csv('../selected_features.csv', sep='\t')
+    preDM_criteria = (combined_selected_features['LBDINSI'] >= 100) | (combined_selected_features['LBXAPB'] >= 110) | (combined_selected_features['LBXGH'] >= 5.5)
 
     preDMCondFilter(combined_selected_features, preDM_criteria)
     print('test line')
@@ -20,4 +19,4 @@ def preDMCondFilter(combined_selected_features, preDM_criteria):
 
 
 if __name__ == "__main__":
-    preDM_extract()
+    main()

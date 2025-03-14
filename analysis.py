@@ -10,8 +10,8 @@ def main():
     
     # 2. Save the cleaned dataset and stats
     save_cleaned_data(combined_selected_features, 
-                      data_path="..\spreadsheets_csv\selected_features.csv", 
-                      stats_path="..\spreadsheets_csv\selected_features_stats.csv")
+                      data_path="selected_features.csv", 
+                      stats_path="selected_features_stats.csv")
     
     # 3. Perform additional analysis or visualization
     #visualization_of_data(combined_selected_features)
