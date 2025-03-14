@@ -2,11 +2,12 @@
 
 from sklearn.linear_model  import LogisticRegression
 from sklearn.metrics import classification_report, accuracy_score
-from model_selection import common
+import common
 
 def main():
     X_resampled, y_resampled, X_test_scaled, y_test = common.prepareData()
-    train_evaluate_model(X_resampled, y_resampled, X_test_scaled, y_test)
+    accuracy = train_evaluate_model(X_resampled, y_resampled, X_test_scaled, y_test)
+    return accuracy
 
 def train_evaluate_model(X_resampled, y_resampled, X_test_scaled, y_test):
     print("\nLogistic Regression:")
@@ -18,6 +19,8 @@ def train_evaluate_model(X_resampled, y_resampled, X_test_scaled, y_test):
     accuracy = accuracy_score(y_test, y_pred)
     print(f"Accuracy: {accuracy:.2f}")
     print(classification_report(y_test, y_pred))
+
+    return accuracy
 
 if __name__ == "__main__":
     main()

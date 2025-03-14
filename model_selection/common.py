@@ -22,13 +22,13 @@ def prepareData():
 def encode_and_split(labeled_selected_features):
 
     #X = labeled_selected_features[['BPQ020', 'PADDURAT', 'SLD010H', 'RIAGENDR', 'LBXAPB', 'LBDINSI', 'LBXGH']]
-    X = labeled_selected_features[['BPQ020', 'PADDURAT', 'SLD010H', 'LBXAPB']]
+    X = labeled_selected_features[['BPQ020', 'PADDURAT',   'LBXAPB', 'LBDINSI', 'LBXGH']]
     Y = labeled_selected_features["PreDM"].copy()
    
     X = X.loc[Y.index]
 
-    X_train, X_test, y_train, y_test = train_test_split(X, Y, test_size=0.2, random_state=42)
-    print(y_train.nunique)
+    X_train, X_test, y_train, y_test = train_test_split(X, Y, test_size=0.2, train_size=0.7, random_state=42)
+    #print(y_train.nunique)
 
     return X_train, X_test, y_train, y_test
 

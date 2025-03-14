@@ -114,9 +114,13 @@ def prepare_data():
     ## insulin
     combined_selected_features['LBDINSI'] = clean_plasma_fasting_glucose_insulin(combined_selected_features['LBDINSI'])
 
-    combined_selected_features = combined_selected_features.fillna(combined_selected_features.mean())
+    # Calculate the mean of each column
+    column_means = combined_selected_features.mean().round(2)
+    
+    # Fill NaN values with the mean of the respective column
+    cleaned_combined_selected_features = combined_selected_features.fillna(column_means)
 
-    return combined_selected_features
+    return cleaned_combined_selected_features
 
 
 def save_cleaned_data(df, data_path="selected_features.csv", stats_path="selected_features_stats.csv"):
