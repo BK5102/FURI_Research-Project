@@ -10,7 +10,7 @@ from imblearn.over_sampling import SMOTE
 from sklearn.impute import SimpleImputer
 
 def main():
-    labeled_selected_features = pd.read_csv('../../../selected_features_labeled.csv', sep='\t', header=0)
+    labeled_selected_features = pd.read_csv('../../selected_features_labeled.csv', sep='\t', header=0)
 
     X_train, X_test, y_train, y_test = encode_and_split(labeled_selected_features)
 
@@ -27,7 +27,7 @@ def encode_and_split(labeled_selected_features):
     #imp = SimpleImputer(missing_values=np.nan, strategy='mean') 
 
     #X = labeled_selected_features[['BPQ020', 'PADDURAT', 'SLD010H', 'RIAGENDR', 'LBXAPB', 'LBDINSI', 'LBXGH']]
-    X = labeled_selected_features[['BPQ020', 'PADDURAT', 'RIAGENDR', 'LBXAPB', 'LBDINSI', 'LBXGH']]
+    X = labeled_selected_features[['BPQ020', 'PADDURAT', 'SLD010H', 'LBXAPB', 'LBDINSI', 'LBXGH']]
 
     #imp = imp.fit(X)
     #X = imp.transform(X)
