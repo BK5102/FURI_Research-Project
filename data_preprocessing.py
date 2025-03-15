@@ -28,6 +28,16 @@ def prepare_data():
     plasma_fasting_insulin = pd.read_csv("raw_data/2005-2006/Plasma_Fasting_Glucose_Insulin.csv")
     sleep_data = pd.read_csv("raw_data/2005-2006/Sleep_Disorders.csv")
 
+    blood_pressure_and_cholesterol_20078 = pd.read_csv("raw_data/2007-2008/Blood_Pressure_Cholesterol.csv")
+    diabetes_20078 = pd.read_csv("raw_data/2007-2008/Diabetes.csv")
+    cholesterolldl_trigly_ApoB_20078 = pd.read_csv("raw_data/2007-2008/ApoB.csv")
+    demographics_20078 = pd.read_csv("raw_data/2007-2008/Demographics.csv")
+    hbA1c_20078 = pd.read_csv("raw_data/2007-2008/Glycohemoglobin.csv", dtype=float)
+    #physical_act_individual_20078 = pd.read_csv("raw_data/2007-2008/Physical_Activity - Individual_Activities.csv")
+    physical_act_20078 = pd.read_csv("raw_data/2007-2008/Physical_Activity.csv")
+    plasma_fasting_insulin_20078 = pd.read_csv("raw_data/2007-2008/Plasma_Fasting_Glucose_Insulin.csv")
+    sleep_data_20078 = pd.read_csv("raw_data/2007-2008/Sleep_Disorders.csv")
+
     # Merge data on key 'SEQN'
     masterlist = (
         blood_pressure_and_cholesterol
@@ -40,7 +50,22 @@ def prepare_data():
         .merge(plasma_fasting_insulin, on="SEQN")
         .merge(sleep_data, on="SEQN")
     )
-
+    
+        # Merge data on key 'SEQN'
+    masterlist20078 = (
+        blood_pressure_and_cholesterol_20078
+        .merge(diabetes_20078, on="SEQN")
+        .merge(cholesterolldl_trigly_ApoB_20078, on="SEQN")
+        .merge(demographics_20078, on="SEQN")
+        .merge(hbA1c_20078, on="SEQN")
+        #.merge(physical_act_individual_20078, on="SEQN")
+        .merge(physical_act_20078, on="SEQN")
+        .merge(plasma_fasting_insulin_20078, on="SEQN")
+        .merge(sleep_data_20078, on="SEQN")
+    )
+    print(masterlist.shape[0])
+    masterlist = pd.concat([masterlist,masterlist20078], ignore_index=True)
+    print(masterlist.shape[0])
     # Remove duplicates
     masterlist.drop_duplicates(inplace=True)
 

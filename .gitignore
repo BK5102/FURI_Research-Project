@@ -2,4 +2,4 @@ __pychache__
 .idea/
 */__pycache__/*.pyc
 .vscode/
-star.pyc
+*.pyc

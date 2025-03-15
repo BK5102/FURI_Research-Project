@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Workspace xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <Packages>
+    <DataPackage xsi:nil="true" />
+    <DataPackage xsi:nil="true" />
+    <DataPackage xsi:nil="true" />
+    <DataPackage xsi:nil="true" />
+    <DataPackage xsi:nil="true" />
+    <DataPackage xsi:nil="true" />
+    <DataPackage xsi:nil="true" />
+    <DataPackage xsi:nil="true" />
+    <DataPackage xsi:nil="true" />
+    <DataPackage xsi:nil="true" />
+  </Packages>
+  <AppState>
+    <UserFormatFiles />
+    <UsePaging>true</UsePaging>
+    <PageSize>10000</PageSize>
+    <PageCutoff>10000</PageCutoff>
+    <SpecialMissings>LPSMVNONE</SpecialMissings>
+  </AppState>
+  <ScreenRes>
+    <Width>1920</Width>
+    <Height>1080</Height>
+  </ScreenRes>
+  <Location>
+    <X>757</X>
+    <Y>170</Y>
+  </Location>
+  <Size>
+    <Width>1024</Width>
+    <Height>640</Height>
+  </Size>
+</Workspace>
