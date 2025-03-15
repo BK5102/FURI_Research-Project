@@ -1,8 +1,8 @@
+#heatmap of complete dataset
+
 import pandas as pd
 import seaborn as sns
 import matplotlib.pyplot as plt
-
-#heatmap of complete dataset
 
 def main():
     labeled_selected_features = pd.read_csv('../../../selected_features_labeled.csv', sep='\t')
@@ -18,4 +18,3 @@ def display_heatmap(complete_dataset):
 
 if __name__ == "__main__":
     main()
-

@@ -5,7 +5,7 @@ import seaborn as sns
 from data_preprocessing import prepare_data, save_cleaned_data
 
 def main():
-    # 1. Get the cleaned data
+    #Get the cleaned data
     combined_selected_features = prepare_data()
     
     # Calculate mean exluding 0
@@ -34,7 +34,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-
-
-
-

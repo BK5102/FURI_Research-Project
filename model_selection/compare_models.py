@@ -31,7 +31,3 @@ def display_accuracies():
 if __name__ == "__main__":
     display_accuracies()
     
-
-
-
-

@@ -16,8 +16,6 @@ def categorical_graph(labeled_selected_features):
     categorical_vars = [col for col in labeled_selected_features.columns if col not in continuous_vars]
     categorical_data = labeled_selected_features[categorical_vars]
 
-    #print(categorical_data)
-
     for cat_col1 in categorical_data:
         for cat_col2 in categorical_data:
             if cat_col1 != cat_col2:
@@ -28,7 +26,7 @@ def categorical_graph(labeled_selected_features):
                 filename = f"visualizations/{cat_col1}_vs_{cat_col2}.png"
                 plt.savefig(filename)
                 plt.close() 
-                #plt.show()
+                plt.show()
 
 if __name__ == "__main__":
     categorical_main()

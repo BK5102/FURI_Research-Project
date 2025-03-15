@@ -1,15 +1,14 @@
+   # final features after narrowing down using filter:
+        # hypertension, physical activity - duration, sleep, gender
+
 import matplotlib.pyplot as plt
 import seaborn as sns
 
-
 def preDM_visualization(preDM_filter):
-    # final features after narrowing down using filter:
-        # hypertension, physical activity - duration, sleep, gender
-
-    #print("final_features chosen for pre-dm visualization: ", 'BPQ020', 'PADDURAT', 'SLD010H', 'RIAGENDR')
 
     # 1. compare hypertension rates by gender 
         # shows how many males vs. females reported hypertension.
+
     # Count hypertension cases by gender
     hypertension_counts = preDM_filter.groupby("RIAGENDR")["BPQ020"].value_counts().unstack()
 

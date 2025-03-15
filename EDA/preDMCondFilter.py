@@ -7,7 +7,6 @@ def main():
     preDMCondFilter(combined_selected_features, preDM_criteria)
     print('test line')
 
-
 def preDMCondFilter(combined_selected_features, preDM_criteria):
     
     combined_selected_features.columns = combined_selected_features.columns.str.strip()
@@ -16,7 +15,5 @@ def preDMCondFilter(combined_selected_features, preDM_criteria):
 
     combined_selected_features.to_csv('../selected_features_labeled.csv', sep='\t', index=False)
     
-
-
 if __name__ == "__main__":
     main()

@@ -22,7 +22,7 @@ def continous_graph(labeled_selected_features):
     print("test line")
     plt.savefig("visualizations/pairplot_continous.png")
     
-    #plt.show()
+    plt.show()
 
 if __name__ == "__main__":
     continous_main()

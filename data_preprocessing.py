@@ -13,9 +13,7 @@ from data_cleaning.cholesterol import clean_cholesterol_ApoB
 from data_cleaning.insulin import clean_plasma_fasting_glucose_insulin
 from data_cleaning.glycohemoglobin import clean_glycohemoglobin
 
-
 def prepare_data():
-    """Loads, merges, cleans, and returns the final selected DataFrame."""
 
     # Load CSV files
     blood_pressure_and_cholesterol = pd.read_csv("raw_data/2005-2006/Blood_Pressure_Cholesterol.csv")
@@ -28,7 +26,7 @@ def prepare_data():
     plasma_fasting_insulin = pd.read_csv("raw_data/2005-2006/Plasma_Fasting_Glucose_Insulin.csv")
     sleep_data = pd.read_csv("raw_data/2005-2006/Sleep_Disorders.csv")
 
-    blood_pressure_and_cholesterol_20078 = pd.read_csv("raw_data/2007-2008/Blood_Pressure_Cholesterol.csv")
+    """ blood_pressure_and_cholesterol_20078 = pd.read_csv("raw_data/2007-2008/Blood_Pressure_Cholesterol.csv")
     diabetes_20078 = pd.read_csv("raw_data/2007-2008/Diabetes.csv")
     cholesterolldl_trigly_ApoB_20078 = pd.read_csv("raw_data/2007-2008/ApoB.csv")
     demographics_20078 = pd.read_csv("raw_data/2007-2008/Demographics.csv")
@@ -36,7 +34,7 @@ def prepare_data():
     #physical_act_individual_20078 = pd.read_csv("raw_data/2007-2008/Physical_Activity - Individual_Activities.csv")
     physical_act_20078 = pd.read_csv("raw_data/2007-2008/Physical_Activity.csv")
     plasma_fasting_insulin_20078 = pd.read_csv("raw_data/2007-2008/Plasma_Fasting_Glucose_Insulin.csv")
-    sleep_data_20078 = pd.read_csv("raw_data/2007-2008/Sleep_Disorders.csv")
+    sleep_data_20078 = pd.read_csv("raw_data/2007-2008/Sleep_Disorders.csv") """
 
     # Merge data on key 'SEQN'
     masterlist = (
@@ -51,8 +49,8 @@ def prepare_data():
         .merge(sleep_data, on="SEQN")
     )
     
-        # Merge data on key 'SEQN'
-    masterlist20078 = (
+    # Merge data on key 'SEQN'
+    """ masterlist20078 = (
         blood_pressure_and_cholesterol_20078
         .merge(diabetes_20078, on="SEQN")
         .merge(cholesterolldl_trigly_ApoB_20078, on="SEQN")
@@ -62,10 +60,11 @@ def prepare_data():
         .merge(physical_act_20078, on="SEQN")
         .merge(plasma_fasting_insulin_20078, on="SEQN")
         .merge(sleep_data_20078, on="SEQN")
-    )
-    print(masterlist.shape[0])
+    ) """
+    """ print(masterlist.shape[0])
     masterlist = pd.concat([masterlist,masterlist20078], ignore_index=True)
-    print(masterlist.shape[0])
+    print(masterlist.shape[0]) """
+
     # Remove duplicates
     masterlist.drop_duplicates(inplace=True)
 
@@ -74,12 +73,12 @@ def prepare_data():
 
     # Select relevant features
     selected_features = {
-        "BPC": ["BPQ020"], #hypertension
+        "BPC": ["BPQ020"],
 
         "Diabetes": ["DIQ010", "DID040", "DIQ220", "DIQ190A", "DIQ190B", "DIQ230", "DID260", "DIQ280", "DIQ300S", "DIQ300D"],
         
         "Physical_Activity": ["PAQ180"],
-        "Physical_act_individual": ["PADACTIV", "PADDURAT"], #duration of activity
+        "Physical_act_individual": ["PADACTIV", "PADDURAT"],
         "Sleep": ["SLD010H"],
 
 
@@ -142,7 +141,6 @@ def prepare_data():
 
 
 def save_cleaned_data(df, data_path="selected_features.csv", stats_path="selected_features_stats.csv"):
-    """Saves the cleaned DataFrame and its summary stats to CSV files."""
     if not df.empty:
         df.to_csv(data_path, sep='\t', index=False)
         # Save summary statistics

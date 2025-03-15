@@ -1,15 +1,14 @@
+# final features after narrowing down using filter:
+        # hypertension, physical activity - duration, sleep, gender
+
 import matplotlib.pyplot as plt
 import seaborn as sns
 
-
 def non_preDM_visualization(non_preDM_filter):
-    # final features after narrowing down using filter:
-        # hypertension, physical activity - duration, sleep, gender
-
-    #print("final_features chosen for non_pre-dm visualization: ", 'BPQ020', 'PADDURAT', 'SLD010H', 'RIAGENDR')
 
     # 1. compare hypertension rates by gender 
         # shows how many males vs. females reported hypertension.
+
     # Count hypertension cases by gender
     hypertension_counts = non_preDM_filter.groupby("RIAGENDR")["BPQ020"].value_counts().unstack()
 
@@ -25,8 +24,8 @@ def non_preDM_visualization(non_preDM_filter):
     plt.tight_layout()
     
     # 2. compare physical activity and sleep by hypertension status 
-        # helps compare distributions of sleep & activity between hypertensive vs. 
-        # non-hypertensive individuals.
+        # helps compare distributions of sleep & activity between hypertensive vs. non-hypertensive individuals.
+
     plt.figure(figsize=(12, 6))
 
     # Physical Activity vs Hypertension
@@ -49,6 +48,7 @@ def non_preDM_visualization(non_preDM_filter):
 
     # 3. visualize relationship between physical activity & sleep by hypertension status
         # shows if people with hypertension tend to have lower activity/sleep durations.
+
     plt.figure(figsize=(8, 6))
 
     sns.scatterplot(data=non_preDM_filter, x="PADDURAT", y="SLD010H", hue="BPQ020", palette="coolwarm", alpha=0.7)
@@ -62,6 +62,7 @@ def non_preDM_visualization(non_preDM_filter):
     
     # 4. density of sleep/activity duration by hypertension status
         # smoother than a histogram, good for distribution insights.
+        
     plt.figure(figsize=(12, 5))
 
     # Histogram for Physical Activity

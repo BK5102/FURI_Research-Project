@@ -9,10 +9,7 @@ def prepareData():
     X_train, X_test, y_train, y_test = encode_and_split(labeled_selected_features)
 
     X_train_scaled, X_test_scaled = scaleFeatures(X_train, X_test)
-
-    # oversample the minority class using SMOTE
-    # avoid overfitting
-    # improves performance on imbalanced datasets
+ 
     X_resampled, y_resampled = handle_class_imbalance(X_train_scaled, y_train)
 
     return X_resampled, y_resampled, X_test_scaled, y_test
@@ -35,6 +32,10 @@ def scaleFeatures(X_train, X_test):
     X_test_scaled = scaler.transform(X_test)
 
     return X_train_scaled, X_test_scaled
+
+# oversample the minority class using SMOTE
+# avoid overfitting
+# improves performance on imbalanced datasets
 
 def handle_class_imbalance(X_train_scaled, y_train):
     smote = SMOTE(random_state=42)
