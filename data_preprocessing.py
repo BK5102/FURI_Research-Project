@@ -41,18 +41,11 @@ def prepare_data():
         .merge(sleep_data, on="SEQN")
     )
 
-    # Drop missing values
-    #masterlist.dropna(inplace=True)
-
-    # Remove outliers
-    #numeric_cols = masterlist.select_dtypes(include=[np.number]).columns
-    #masterlist = filter_outliers_per_column(masterlist, numeric_cols, threshold=4)
-
     # Remove duplicates
     masterlist.drop_duplicates(inplace=True)
 
     # Optional sampling (90%)
-    masterlist = masterlist.sample(frac=0.9, random_state=42)
+    #masterlist = masterlist.sample(frac=0.9, random_state=42)
 
     # Select relevant features
     selected_features = {
