@@ -25,7 +25,7 @@ def continous_graph(labeled_selected_features):
     plt.figure(figsize=(10,6))
 
     sns.pairplot(labeled_selected_features, vars=continuous_vars, hue='PreDM', diag_kind='kde')
-    plt.title("Pairplot of all continous variables in dataset", fontsize=10)
+    plt.title("Pairplot of all continous variables in dataset", fontsize=12)
     print("test line")
     plt.savefig("visualizations/pairplot_continous.png")
     

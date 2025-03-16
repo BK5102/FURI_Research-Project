@@ -26,6 +26,7 @@ def display_accuracies():
     plt.title('Model Accuracies')
     plt.xlim(0, 1.1)  # x-axis limit from 0 to 1.1 to give some space for the bars
     plt.gca().invert_yaxis()  # display the highest accuracy at the top
+    plt.savefig("visualizations/accuracy_comparison.png")
     plt.show()
 
 if __name__ == "__main__":
