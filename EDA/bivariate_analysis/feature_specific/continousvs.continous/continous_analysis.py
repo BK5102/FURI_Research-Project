@@ -13,6 +13,7 @@ def continous_graph(labeled_selected_features):
 
     selected_vars = ['BPQ020', 'PADDURAT', 'SLD010H', 'LBXAPB', 'LBDINSI', 'LBXGH']
 
+
     continuous_vars = [col for col in selected_vars
                        if col in labeled_selected_features.columns]
     if not continuous_vars:
@@ -21,15 +22,28 @@ def continous_graph(labeled_selected_features):
     
     #remove SEQN value
     del continuous_vars[0]
-    
-    plt.figure(figsize=(10,6))
 
-    sns.pairplot(labeled_selected_features, vars=continuous_vars, hue='PreDM', diag_kind='kde')
-    plt.title("Pairplot of all continous variables in dataset", fontsize=12)
+    # rename columns for better readability
+    rename_dict = {
+        'BPQ020': 'Blood Pressure',
+        'PADDURAT': 'Physical Activity Duration', #continous
+        'SLD010H': 'Sleep Hours',
+        'LBXAPB': 'Apolipoprotein B',
+        'LBDINSI': 'Insulin Level',
+        'LBXGH': 'Glycohemoglobin'
+    }
+
+    labeled_selected_features = labeled_selected_features.rename(columns=rename_dict, inplace=False)
+    renamed_vars = [rename_dict[col] for col in continuous_vars]
+
+    #plt.figure(figsize=(10,6))
+
+    sns.pairplot(labeled_selected_features, vars=renamed_vars, hue='PreDM', diag_kind='kde')
+    plt.suptitle("Pairplot of all continous variables in dataset", fontsize=12, y=1.03, ha='center')
     print("test line")
     plt.savefig("visualizations/pairplot_continous.png")
     
-    plt.show()
+    #plt.show()
 
 if __name__ == "__main__":
     continous_main()

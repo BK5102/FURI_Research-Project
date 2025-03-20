@@ -20,10 +20,25 @@ def categorical_graph(labeled_selected_features):
 
     categorical_vars = [col for col in selected_vars if col not in continuous_vars]
 
-    #print("Categorical Variables:", categorical_vars)
+    #remove SEQN value
+    del continuous_vars[0]
 
-    if len(categorical_vars) == 1:
-        cat_col = categorical_vars[0]
+    # rename columns for better readability
+    rename_dict = {
+        'BPQ020': 'Blood Pressure',
+        'PADDURAT': 'Physical Activity Duration',
+        'SLD010H': 'Sleep Hours',
+        'LBXAPB': 'Apolipoprotein B',
+        'LBDINSI': 'Insulin Level',
+        'LBXGH': 'Glycohemoglobin'
+    }
+
+    labeled_selected_features.rename(columns=rename_dict, inplace=True)
+    renamed_vars = [rename_dict[col] for col in categorical_vars]
+
+
+    if len(renamed_vars) == 1:
+        cat_col = renamed_vars[0]
         
         # Bar plot of category counts
         plt.figure(figsize=(6, 4))
@@ -36,11 +51,9 @@ def categorical_graph(labeled_selected_features):
         plt.savefig(filename)
         plt.show()
         
-        #print(f"Saved single categorical variable plot: {filename}")
-
     else:
-        for cat_col1 in categorical_vars:
-            for cat_col2 in categorical_vars:
+        for cat_col1 in renamed_vars:
+            for cat_col2 in renamed_vars:
                 if cat_col1 != cat_col2:
                     crosstab = pd.crosstab(labeled_selected_features[cat_col1], labeled_selected_features[cat_col2])
                     plt.figure(figsize=(5, 3))

@@ -23,6 +23,7 @@ def display_accuracies():
     plt.figure(figsize=(10, 6))
     plt.barh(models, scores, color='olivedrab') # horizontal bar plot
     plt.xlabel('Accuracy')
+    plt.yticks(fontsize=8)
     plt.title('Model Accuracies')
     plt.xlim(0, 1.1)  # x-axis limit from 0 to 1.1 to give some space for the bars
     plt.gca().invert_yaxis()  # display the highest accuracy at the top
