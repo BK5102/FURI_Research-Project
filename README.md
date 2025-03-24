@@ -1,2 +1,35 @@
-# FURI_Research-Project Codebase
-FURI Research Project Spring '25. How can  can real-time data from wearable devices and electronic health records (EHRs) be analyzed for early detection of chronic diseases?
+# Supervised Learning for Early Detection of Chronic Diseases Using Wearable and Other Health Data in NHANES
+
+## This approach leverages wearable and other health data from the National Health and Nutrition Examination Survey (NHANES) to develop a Supervised Learning (SL) framework that detects pre-diabetes mellitus symptoms using non-biochemical factors such as hypertension, sleep and physical activity measurements from wearables.
+
+## Overview
+
+
+## Motivation and Background
+
+
+## Methodology
+
+
+## Repository Structure
+
+
+## Installation and Setup
+
+
+## Usage 
+
+
+## Results and Findings (Progress)
+
+
+## Future Work/Improvements
+
+
+## Contributors 
+
+
+## References
+
+
+## License
