@@ -2,10 +2,10 @@
 
 from sklearn.linear_model  import LogisticRegression
 from sklearn.metrics import classification_report, accuracy_score
-import common
+import common_copy
 
 def main():
-    X_resampled, y_resampled, X_test_scaled, y_test = common.prepareData()
+    X_resampled, y_resampled, X_test_scaled, y_test = common_copy.prepareData()
     accuracy = train_evaluate_model(X_resampled, y_resampled, X_test_scaled, y_test)
     return accuracy
 
