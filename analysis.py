@@ -9,7 +9,7 @@ def main():
     combined_selected_features = prepare_data()
     
     # Calculate mean exluding 0
-    mean_without_zeros = combined_selected_features['LBDINSI'][combined_selected_features['LBDINSI'] != 0.0].mean().round(2)
+    """ mean_without_zeros = combined_selected_features['LBDINSI'][combined_selected_features['LBDINSI'] != 0.0].mean().round(2)
     # Replace 0 with the calculated mean
     combined_selected_features['LBDINSI'] = combined_selected_features['LBDINSI'].replace(0.0, mean_without_zeros)
 
@@ -24,7 +24,7 @@ def main():
 
     combined_selected_features['SLD010H'].fillna(0)
     mean_without_zeros = combined_selected_features['SLD010H'][combined_selected_features['SLD010H'] != 0.0].mean().round(2)
-    combined_selected_features['SLD010H'] = combined_selected_features['SLD010H'].replace(0.0, mean_without_zeros)
+    combined_selected_features['SLD010H'] = combined_selected_features['SLD010H'].replace(0.0, mean_without_zeros) """
 
     # 2. Save the cleaned dataset and stats
     save_cleaned_data(combined_selected_features, 

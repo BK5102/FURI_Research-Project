@@ -104,7 +104,7 @@ def prepare_data():
     # Replace special codes with numeric values or NaN
 
     ## diabetes
-    combined_selected_features['DID040'] = clean_diab_age_column(combined_selected_features['DID040'])
+    """ combined_selected_features['DID040'] = clean_diab_age_column(combined_selected_features['DID040'])
     combined_selected_features['DIQ230'] = clean_diab_since_saw_specialist_column(combined_selected_features['DIQ230'])
     combined_selected_features['DIQ280'] = clean_diab_last_A1C_level(combined_selected_features['DIQ280'])
     combined_selected_features['DIQ220'] = clean_diab_when_diagnosis(combined_selected_features['DIQ220'])
@@ -130,14 +130,14 @@ def prepare_data():
 
     ## insulin
     combined_selected_features['LBDINSI'] = clean_plasma_fasting_glucose_insulin(combined_selected_features['LBDINSI'])
-
+ """
     # Calculate the mean of each column
-    column_means = combined_selected_features.mean().round(2)
+    #column_means = combined_selected_features.mean().round(2)
     
     # Fill NaN values with the mean of the respective column
-    cleaned_combined_selected_features = combined_selected_features.fillna(column_means)
+    #cleaned_combined_selected_features = combined_selected_features.fillna(column_means)
 
-    return cleaned_combined_selected_features
+    return combined_selected_features
 
 
 def save_cleaned_data(df, data_path="selected_features.csv", stats_path="selected_features_stats.csv"):

@@ -3,7 +3,7 @@
 from sklearn.tree import DecisionTreeClassifier
 from sklearn.metrics import classification_report, accuracy_score
 from sklearn.tree import plot_tree
-import common_copy
+import ..practice_1 as common_copy
 import matplotlib as plt
 import matplotlib.pyplot as plt
 import seaborn as sns
