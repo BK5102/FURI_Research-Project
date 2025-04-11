@@ -31,7 +31,6 @@
 
 ## Repository Structure
 
-
 ## Installation and Setup
 ### Steps to clone repository:
 `git clone https://github.com/BK5102/FURI_Research-Project.git`
@@ -60,9 +59,9 @@ https://drive.google.com/file/d/1pIZAUt5SDjsy82e8fnXWyhTHmg3TjJfP/view?usp=shari
 
 ## Results and Findings (Progress)
 ### Insights from feature importance analysis
-  #### SHAP Value scores identified age and hypertension as the most important features 
-  #### These risk factors can be monitored from wearable devices 
-  #### Provides insights into important demographics such as gender (male/female)
+  #### SHAP Value scores identified age and hypertension as the most important features.
+  #### These risk factors can be monitored from wearable devices.
+  #### Provides insights into important demographics such as gender (male/female).
 
 ## Future Work/Improvements
 ### Improving dataset size and diversity
