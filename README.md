@@ -60,14 +60,15 @@ https://drive.google.com/file/d/1pIZAUt5SDjsy82e8fnXWyhTHmg3TjJfP/view?usp=shari
 ## Results and Findings (Progress)
 ### Insights from feature importance analysis
   #### SHAP Value scores identified age and hypertension as the most important features.
-  #### These risk factors can be monitored from wearable devices.
+  #### These risk factors can be monitored from wearable devices. 
   #### Provides insights into important demographics such as gender (male/female).
 
 ## Future Work/Improvements
 ### Improving dataset size and diversity
-### Building application
-### Exploring additional non-biochemical features
-### Deploying the model for real-world testing
+  #### A larger dataset from previous years will help improve the model and result in better accuracy. 
+  #### Using a wide range of dataset with various variables/features will help result in better hyperparameter tuning results. 
+### Exploring additional features
+  #### Some features that can be explored more are dietary data (food intake, nutrition levels, protein, carbohydrate and total fat levels), demographics data (race/ethnicity, country of birth), and       examinaion data (blood pressure status, caffeine levels, systolic and diastolic blood pressure, oral health). 
 
 ## Contributors 
 ### Kabsoo Jang, PhD student under Professor Bing Si at Fulton Schools of Engineering, Arizona State University, Tempe, AZ
