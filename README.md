@@ -16,8 +16,6 @@
 ### The approach of this research project relies on self-reported data and wearable technology. Thus, promoting a scalable, low-cost, and early-stage screening.
 ### The American Diabetes Association (ADA) has a guideline for pre-diabetes. Modeling from this, the guideline chosen for this project uses three important variables: plasma fasting insulin levels, apolipoprotein b, and glycohemoglobin (hb1ac) levels from the NHANES dataset. 
 
-## Challenges
-
 ## Methodology
 ### Dataset: 
   #### National Health and Nutrition Examination Survey (NHANES) 2005-2006 dataset
